@@ -1,0 +1,40 @@
+{
+    "workbench.colorCustomizations": {
+        "[GitHub Light Default]": {
+            "titleBar.activeBackground": "#34393f",
+            "titleBar.activeForeground": "#ffffff",
+            "titleBar.inactiveBackground": "#44494f",
+            "titleBar.inactiveForeground": "#ffffff",
+            "activityBar.activeFocusBorder": "#ff0000",
+            "activityBar.activeBackground": "#ffffff",
+            "activityBar.activeBorder": "#0a72e9ac",
+            "activityBar.background": "#f8f9fa",
+            "sideBar.background": "#ffffff",
+            "sideBarSectionHeader.background": "#ffffff",
+            "sideBar.border": "#0a72e9ac",
+            "tree.indentGuidesStroke": "#b0b0b0",
+            "tab.activeBorderTop": "#ffffff",
+            "tab.inactiveBackground": "#fafbfc",
+            "editorGroupHeader.border": "#dddddd",
+            "editorGroupHeader.tabsBorder": "#0a72e9ac",
+            "editorGutter.background": "#ffffff",
+            "editorGroup.border": "#0a72e9ac",
+            "editor.foreground": "#555588",
+            "editorBracketHighlight.foreground1": "#0969da",
+            "editorBracketHighlight.foreground2": "#008a27",
+            "editorBracketHighlight.foreground3": "#d88500",
+            "editorBracketHighlight.foreground4": "#cf222e",
+            "editorBracketHighlight.foreground5": "#bf3989",
+            "editorBracketHighlight.foreground6": "#8250df",
+            "statusBarItem.remoteBackground": "#738bff",
+            "statusBarItem.remoteForeground": "#ffffff",
+            "minimap.background": "#fafbfc",
+            "minimapSlider.background": "#0a72e918",
+            "minimapSlider.hoverBackground": "#0a72e935",
+            "minimapSlider.activeBackground": "#0a72e988"
+        },
+        "[Vira*]": {},
+        "minimap.background": "#00000000",
+        "scrollbar.shadow": "#00000000"
+    }
+}
