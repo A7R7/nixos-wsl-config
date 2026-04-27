@@ -8,6 +8,15 @@
   programs = {
     home-manager.enable = true;
 
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    starship = {
+      enable = true;
+    };
+
     lsd = {
       enable = true;
       settings = {
@@ -17,17 +26,6 @@
           separator = " ";
         };
       };
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
-    starship.enable = true;
-
-    fish = {
-      enable = true;
     };
   };
 }

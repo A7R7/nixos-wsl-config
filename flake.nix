@@ -2,19 +2,15 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    openclaw.url = "github:Scout-DJ/openclaw-nix";
   };
 
-  outputs = inputs@{ 
+  outputs = inputs @ { 
     self, 
     nixpkgs, 
     nixos-wsl, 
     home-manager,
-    # openclaw,
     ... 
   }:
   let
@@ -31,10 +27,8 @@
       "${hostname}" = nixpkgs.lib.nixosSystem {
         system = "${system}";
         modules = [
-          # determinate.nixosModules.default
           nixos-wsl.nixosModules.default
-          # openclaw.nixosModules.default
-          # { nixpkgs.overlays = [ openclaw.overlays.default ]; }
+          ./zsh.nix
           {
             system.stateVersion = "25.11";
 
@@ -67,20 +61,16 @@
               users."${username}" = {
                 isNormalUser = true;
                 extraGroups = [ "wheel" "docker" ];
-                shell = pkgs.fish;
-                ignoreShellProgramCheck = true;
+                shell = pkgs.zsh;
               };
             };
 
             environment.systemPackages = with pkgs; [
-              coreutils vim git btop lazygit nerd-fonts.noto wget 
-              docker-buildx just zellij android-tools 
-              # android-studio 
+              coreutils vim git btop lazygit nerd-fonts.noto wget
+              docker-buildx just zellij android-tools
               ripgrep fd inetutils unzip nmap
-              python314 
-              # claude-code
-              # litellm
-              # opencode
+              python314
+              zsh
             ];
             
             environment.localBinInPath = true;
