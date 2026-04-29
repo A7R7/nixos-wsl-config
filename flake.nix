@@ -71,6 +71,7 @@
               ripgrep fd inetutils unzip nmap
               python314
               zsh
+              tar zip unzip
             ];
             
             environment.localBinInPath = true;
