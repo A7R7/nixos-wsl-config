@@ -4,6 +4,8 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    pi-agent.url = "github:rbright/nix-pi-agent";
+    pi-agent.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { 
@@ -11,6 +13,7 @@
     nixpkgs, 
     nixos-wsl, 
     home-manager,
+    pi-agent,
     ... 
   }:
   let
@@ -28,11 +31,9 @@
         system = "${system}";
         modules = [
           nixos-wsl.nixosModules.default
-          ./zsh.nix
           {
             system.stateVersion = "25.11";
 
-            # wsl specific settings
             wsl = {
               enable = true;
               defaultUser = "${username}";
@@ -61,17 +62,19 @@
               users."${username}" = {
                 isNormalUser = true;
                 extraGroups = [ "wheel" "docker" ];
-                shell = pkgs.zsh;
+                shell = pkgs.fish;
               };
             };
 
             environment.systemPackages = with pkgs; [
               coreutils vim git btop lazygit nerd-fonts.noto wget
               docker-buildx just zellij android-tools
-              ripgrep fd inetutils unzip nmap
+              ripgrep fd inetutils nmap
               python314
-              zsh
-              tar zip unzip
+              
+              zip unzip xz gzip bzip2
+              zstd ouch unrar
+              pi-agent.packages.${system}.pi-agent
             ];
             
             environment.localBinInPath = true;
@@ -93,7 +96,8 @@
 
             programs.nh.enable = true;
             programs.nix-ld.enable = true;
-            
+            programs.fish.enable = true;
+
             nix = {
               settings = {
                 auto-optimise-store = true;
